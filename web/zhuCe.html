@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邮箱注册</title>
+    <script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>注册邮箱：</td>
+        <td>
+            <!--<input type="text" name="email" id="mail" onblur="checkEmail()"/><span></span>-->
+            <input type="text" name="email" id="mail"/><span></span>
+
+        </td>
+    </tr>
+    <tr>
+        <td>用户名：</td>
+        <td><input type="text" name="username" id="username"/></td>
+    </tr>
+    <tr>
+        <td>密码：</td>
+        <td><input type="password" name="pwd" id="pwd"/></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="注册"/></td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#mail").keyup(function () {
+            $.ajax({
+                url:"test",
+                type:"get",
+                data:"mail="+$(this).val(),
+                success:function (result) {
+                    if (result == 1) {
+                        $("span").html("<a style='color:red'>该邮箱已注册！</a>");
+                    }else{
+                        $("span").html("<a style='color:green'>邮箱可以用</a>");
+                    }
+                }
+            })
+            // $.get(url,data,success,dataType);
+            // $.get("topic","action=list",success,"json");
+            // $.post(url,data,success,dataType);
+            // $.post("topic","action=list",success,"json");
+
+        })
+
+    })
+
+
+
+/*    var xhr = new XMLHttpRequest();
+    var email = document.getElementById("mail");
+
+    function checkEmail() {
+  /!*      xhr.open("get","test?mail="+email.value,true);
+        xhr.send(null);*!/
+
+        xhr.open("post","test",true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send("mail="+email.value);
+        xhr.onreadystatechange=you;
+
+    }
+
+    function you() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var result = xhr.responseText;
+            if (result == 1) {
+                email.nextElementSibling.innerHTML="<a style='color:red'>该邮箱已注册！</a>";
+            }else{
+                email.nextElementSibling.innerHTML="<a style='color:green'>可以使用！</a>";
+            }
+        }
+
+    }*/
+</script>
+</body>
+
+</html>
