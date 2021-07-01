@@ -19,7 +19,6 @@ public class News {
     private String ncontent; //内容
     private Date nmodifyDate;
     private String nsummary; //摘要
-
     private List<Comments> commentsList;
 
     public News() {
